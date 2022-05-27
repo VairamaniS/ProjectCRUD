@@ -1,0 +1,26 @@
+﻿@page "{id}"
+@model ProjectCRUD.Pages.Assessment.EditModel
+@{
+}
+
+
+<h3>Complete Training (@Model.Id)</h3>
+
+<form method="post">
+
+    
+   
+     <div class="form-group col">
+            <label asp-for="@Model.Grade"></label>
+            <select asp-for="@Model.Grade" asp-items="@Model.Grades" class="form-select"></select>
+        </div>
+    <div class="form-group">
+        <h6 class="text-success">@Model.SuccessMessage</h6>
+        <h6 class="text-danger">@Model.ErrorMessage</h6>
+        <h6 class="text-danger">@Html.ValidationSummary()</h6>
+    </div>
+    <div class="row gx-0">
+        <button type="submit" class="col btn btn-success me-1">Save</button>
+        <a href="/Assessment/List" class="col btn btn-default border-secondary ms-1" role="button">Cancel</a>
+    </div>
+</form>

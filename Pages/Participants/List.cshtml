@@ -1,0 +1,73 @@
+﻿@page
+@model ProjectCRUD.Pages.Participants.ListModel
+@{
+}
+
+
+<form method="post">
+    <div class="row">
+        <div class="col-sm-10"><h3>&nbsp;&nbsp;&nbsp;Participants</h3></div>
+        <div class="col-sm-2">
+            <a href="/Participants/Add" class="btn btn-primary rounded-pill" role="button">
+                <i class="fa fa-add"></i>
+                Registration
+            </a>
+        </div>
+    </div>
+    <br />
+    
+    <div class="form-group">
+        <h6 class="text-success">@Model.SuccessMessage</h6>
+        <h6 class="text-danger">@Model.ErrorMessage</h6>
+    </div>
+    <br />
+
+
+    <table class="table">
+        <thead >
+            <tr style="text-align:center">
+                <th>ParticipantId</th>
+                <th>ParticipantName</th>
+                <th>Gender</th>
+                <th>DOB</th>
+                 <th>MobileNumber</th>
+                  <th>City</th>
+                   <th>State</th>
+                <th>Pincode</th>
+                <th>Actions</th>
+                
+                
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var d in @Model.participants)
+            {
+                <tr  style="text-align:left">
+                    <td>@d.Id</td>
+                    <td>@d.ParticipantName</td>
+                    <td>@d.Gender</td>
+                    <td>@d.DOB</td>
+                    <td>@d.MobileNumber</td>
+                     <td>@d.City</td>
+                      <td>@d.State</td>
+                      <td>@d.Pincode</td>
+                    
+                  
+                   
+                    <td>
+                        <a href="/Participants/Edit/@d.Id" class="btn btn-outline-warning" role="button">
+                            <i class="fa fa-edit"></i>
+                        </a>
+                        
+
+                       
+
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</form>

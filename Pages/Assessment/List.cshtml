@@ -1,0 +1,71 @@
+﻿@page
+@model ProjectCRUD.Pages.Assessment.ListModel
+@{
+}
+
+
+<form method="post">
+    <div class="row">
+        <div class="col-md-10"><h3>Training Status</h3></div>
+        <div class="col-md-2">
+            <a href="/Assessment/Add" class="btn btn-info rounded-pill" role="button">
+                <i class="fa fa-add"></i> Add
+
+            </a>
+        </div>
+    </div>
+    <br />
+
+    <div class="form-group">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Participant Id</th>
+                    <th scope="col">Participant Name</th>
+                    <th scope="col">Course Name</th>
+                    <th scope="col">Start Date</th>
+                    <th scope="col">Completion Date</th>
+                    <th scope="col">Grade</th>
+                    <th scope="col">Actions</th>
+
+
+
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.ParticipantRecords == null || Model.ParticipantRecords.Count <= 0)
+                {
+                    <tr>
+                        <td>"No data found"</td>
+                    </tr>
+                }
+                else
+                {
+                    @foreach (var d in Model.ParticipantRecords)
+                    {
+                        <tr>
+                            <td>@d.ParticipantId</td>
+                            <td>@d.ParticipantName</td>
+                            <td>@d.CourseName</td>
+                            <td>@d.StartDate.ToString("dd-MMM-yyyy hh:mm tt")</td>
+                            <td>@d.CompletionDate?.ToString("dd-MMM-yyyy hh:mm tt")</td>
+
+                            <td>@d.Grade</td>
+                            <td>
+                                @if (d.Grade == null)
+                                {
+                                    <a href="/Assessment/Edit/@d.ParticipantId" class="btn btn-outline-warning" role="button">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                }
+                            </td>
+
+                            
+
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</form>

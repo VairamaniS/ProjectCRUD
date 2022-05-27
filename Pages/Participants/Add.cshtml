@@ -1,0 +1,67 @@
+﻿@page
+@model ProjectCRUD.Pages.Participants.AddModel
+@{
+}
+
+<form method="post">
+    <h3><center>Registration Form</center></h3>
+    <div class="form-group">
+        <label asp-for="@Model.ParticipantName"></label>
+        <input asp-for="@Model.ParticipantName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.Gender"></label>
+        @foreach (var g in Model.Genders)
+        {
+            <div class="form-check form-check-inline">
+                <input type="radio" asp-for="@Model.Gender" value="@g.Value" />
+                @g.Text
+            </div>
+        }
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.DOB"></label>
+        <input asp-for="@Model.DOB" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.MobileNumber"></label>
+        <input asp-for="@Model.MobileNumber" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.Address"></label>
+        <input asp-for="@Model.Address" class="form-control" />
+    </div>
+    <div class="row gx-0">
+        <div class="form-group col">
+            <label asp-for="@Model.City"></label>
+            <input asp-for="@Model.City" class="form-control me-2" />
+        </div>
+        <div class="form-group col col-sm-4">
+            <label asp-for="@Model.State"></label>
+            <input asp-for="@Model.State" class="form-control ms-2" />
+        </div>
+        <div class="form-group col">
+            <label asp-for="@Model.Pincode"></label>
+            <input asp-for="@Model.Pincode" class="form-control me-2" />
+        </div>
+    </div>
+    <div class="row gx-0">
+        <div class="form-group col">
+            <label asp-for="@Model.Location"></label>
+            <select asp-for="@Model.Location" asp-items="@Model.Locations" class="form-select"></select>
+        </div>
+        <div class="form-group col">
+            <label asp-for="@Model.SelectedCourse"></label>
+            <select asp-for="@Model.SelectedCourse" asp-items="@Model.CourseList" class="form-select"></select>
+        </div>
+    </div>
+    <div class="form-group">
+        <h6 class="text-success">@Model.SuccessMessage</h6>
+        <h6 class="text-danger">@Model.ErrorMessage</h6>
+        <h6 class="text-danger">@Html.ValidationSummary()</h6>
+    </div>
+    <div class="row gx-0">
+        <button type="submit" class="col btn btn-primary me-2">Save</button>
+        <a href="/Participants/List" class="col btn btn-default border-secondary ms-2" role="button">Cancel</a>
+    </div>
+</form>
